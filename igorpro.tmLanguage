@@ -155,8 +155,10 @@
 			<string>support.variable.igor</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>C precompiler statements</string>
 			<key>match</key>
-			<string>^#pragma</string>
+			<string>^#\w+</string>
 			<key>name</key>
 			<string>meta.preprocessor.igor</string>
 		</dict>
