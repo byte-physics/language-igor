@@ -159,17 +159,17 @@ repository:
     match: (?i)\b(?:sqrt|cbrt|sin|cos|tan|asin|acos|atan|atan2|log|log10|exp|pow|sinh|cosh|tanh|asinh|acosh|atanh|factorial|pi|nan|sgn|floor|ceil|gcd|lcd|comp|sum|mean|variance|skew|kurtosis)\b
 
   igor_comment:
+    name: comment.double-slash.igor
     comment: double slash comments with doxygen instruction
+    begin: //
+    end: $
     patterns:
-    - name: comment.line.double-dash.igor
-      comment: doxygen instructions only for line comments
-      begin: ^[/]{2,3}\s(\@\w+)
-      beginCaptures:
-        '1': {name: keyword.other.igor}
-      end: $
-    - name: comment.double-slash.igor
-      begin: //
-      end: $
+      - name: keyword.other.igor
+        match: \s\@\w+(?:\[\w+\])?
+      - begin: \`
+        end: \`
+        patterns:
+        - include: '#igor_common'
 
   igor_functions:
     comment: Functions defined in Igor

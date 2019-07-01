@@ -303,35 +303,34 @@
 		</dict>
 		<key>igor_comment</key>
 		<dict>
+			<key>begin</key>
+			<string>//</string>
 			<key>comment</key>
 			<string>double slash comments with doxygen instruction</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>comment.double-slash.igor</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>^[/]{2,3}\s(\@\w+)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.igor</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>doxygen instructions only for line comments</string>
-					<key>end</key>
-					<string>$</string>
+					<key>match</key>
+					<string>\s\@\w+(?:\[\w+\])?</string>
 					<key>name</key>
-					<string>comment.line.double-dash.igor</string>
+					<string>keyword.other.igor</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>//</string>
+					<string>\`</string>
 					<key>end</key>
-					<string>$</string>
-					<key>name</key>
-					<string>comment.double-slash.igor</string>
+					<string>\`</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#igor_common</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
