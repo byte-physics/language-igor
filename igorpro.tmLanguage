@@ -63,7 +63,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)^\s*(?:(threadsafe)\s+)(?:(static)\s+)?\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()</string>
+			<string>(?i)^\s*(?:(threadsafe)\s+)?(?:(static)\s+)?\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
