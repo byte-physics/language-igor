@@ -39,14 +39,7 @@ patterns:
 - include: '#igor_variable'
 
 - name: keyword.control.igor
-  match: \b(?i)(?:if|while|for|switch|strswitch|return|do|end|else|elseif|endif|endfor|endswitch|while|menu|submenu|endmenu|case|break|try|catch|endtry|default|continue)\b
-
-- name: string.quoted.double.igor
-  begin: '"'
-  end: '"'
-  patterns:
-  - name: constant.character.escape.igor
-    match: \\.
+  match: \b(?i)(?:if|while|for|switch|strswitch|return|do|end|else|elseif|endif|endfor|endswitch|while|menu|submenu|endmenu|case|break|try|catch|endtry|default|continue|Multithread)\b
 
 - name: support.variable.igor
   comment: auto variables from operations like V_flag, S_names etc.
@@ -65,22 +58,52 @@ patterns:
     - include: '#igor_comment'
     - include: '#igor_matrixop'
     - include: '#igor_apmath'
+    - include: '#igor_common'
 
-- include: '#igor_functions'
 - include: '#igor_operations'
+- include: '#igor_functions'
+- include: '#igor_common'
 
-- name: keyword.operator.igor
-  match: ([\#$~!%^&*+=\|?:<>/-])
-- name: punctuation.igor
-  match: ([{}()\[\],.;])
-- name: constant.numeric.igor
-  match: (0x[a-f0-9]+)
-- name: constant.numeric.integer.igor
-  match: ([\d]+)
-- name: constant.numeric.float.igor
-  match: (\d+\.\d+(e[\+\-]?\d+)?)
 
 repository:
+  igor_common:
+    comment: common igor pro syntax collection
+    patterns:
+      - include: '#constant_string'
+      - include: '#constant_punctuation'
+      - include: '#constant_numeric'
+      - name: meta.function-call
+        match: \w+(?=[\(])
+      - name: variable.igor
+        comment: all words are variables or functions
+        match: \w+
+
+  constant_punctuation:
+    comment: punctuations and operators
+    patterns:
+      - name: keyword.operator.igor
+        match: ([\#$~!%^&*+=\|?:<>/-])
+      - name: punctuation.igor
+        match: ([{}()\[\],.;])
+
+  constant_string:
+    name: string.quoted.double.igor
+    begin: '"'
+    end: '"'
+    patterns:
+    - name: constant.character.escape.igor
+      match: \\.
+
+  constant_numeric:
+    comment: numeric constants
+    patterns:
+    - name: constant.numeric.igor
+      match: (0x[a-f0-9]+)
+    - name: constant.numeric.integer.igor
+      match: ([\d]+)
+    - name: constant.numeric.float.igor
+      match: (\d+\.\d+(e[\+\-]?\d+)?)
+
   igor_variable:
     comment: Igor types
     patterns:
@@ -99,7 +122,7 @@ repository:
       - name: variable.igor
         match: \w
 
-  igor_function_definition:    
+  igor_function_definition:
     patterns:
     - include: '#igor_variable'
     - name: variable.parameter.optional.igor
@@ -134,9 +157,15 @@ repository:
   igor_operations:
     comment: Operations built into Igor
     name: support.class.igor
-    match: (?i)\b(?:Abort|AddFIFOData|AddFIFOVectData|AddMovieAudio|AddMovieFrame|AddWavesToBoxPlot|AddWavesToViolinPlot|AdoptFiles|Append|AppendBoxPlot|AppendImage|AppendLayoutObject|AppendMatrixContour|AppendText|AppendToGizmo|AppendToGraph|AppendToLayout|AppendToTable|AppendViolinPlot|AppendXYZContour|AutoPositionWindow|AxonTelegraphFindServers|BackgroundInfo|Beep|BoundingBall|BoxSmooth|BrowseURL|BuildMenu|Button|CWT|Chart|CheckBox|CheckDisplayed|ChooseColor|Close|CloseHelp|CloseMovie|CloseProc|ColorScale|ColorTab2Wave|Concatenate|ControlBar|ControlInfo|ControlUpdate|ConvertGlobalStringTextEncoding|ConvexHull|Convolve|CopyDimLabels|CopyFile|CopyFolder|CopyScales|Correlate|CreateAliasShortcut|CreateBrowser|Cross|CtrlBackground|CtrlFIFO|CtrlNamedBackground|Cursor|CurveFit|CustomControl|DAQmx_AI_SetupReader|DAQmx_AO_SetOutputs|DAQmx_CTR_CountEdges|DAQmx_CTR_OutputPulse|DAQmx_CTR_Period|DAQmx_CTR_PulseWidth|DAQmx_DIO_Config|DAQmx_DIO_WriteNewData|DAQmx_Scan|DAQmx_WaveformGen|DPSS|DSPDetrend|DSPPeriodogram|DWT|Debugger|DebuggerOptions|DefaultFont|DefaultGuiControls|DefaultGuiFont|DefaultTextEncoding|DefineGuide|DelayUpdate|DeleteAnnotations|DeleteFile|DeleteFolder|DeletePoints|Differentiate|Display|DisplayHelpTopic|DisplayProcedure|DoAlert|DoIgorMenu|DoUpdate|DoWindow|DoXOPIdle|DrawAction|DrawArc|DrawBezier|DrawLine|DrawOval|DrawPICT|DrawPoly|DrawRRect|DrawRect|DrawText|DrawUserShape|Duplicate|DuplicateDataFolder|EdgeStats|Edit|ErrorBars|EstimatePeakSizes|Execute|ExecuteScriptText|ExperimentInfo|ExperimentModified|ExportGizmo|Extract|FBinRead|FBinWrite|FFT|FGetPos|FIFO2Wave|FIFOStatus|FMaxFlat|FPClustering|FReadLine|FSetPos|FStatus|FTPCreateDirectory|FTPDelete|FTPDownload|FTPUpload|FastGaussTransform|FastOp|FilterFIR|FilterIIR|FindAPeak|FindContour|FindDuplicates|FindLevel|FindLevels|FindPeak|FindPointsInPoly|FindRoots|FindSequence|FindValue|FuncFit|FuncFitMD|GBLoadWave|GISCreateVectorLayer|GISGetRasterInfo|GISGetRegisteredFileInfo|GISGetVectorLayerInfo|GISLoadRasterData|GISLoadVectorData|GISRasterizeVectorData|GISRegisterFile|GISTransformCoords|GISUnRegisterFile|GISWriteFieldData|GISWriteGeometryData|GISWriteRaster|GPIB2|GPIBRead2|GPIBReadBinary2|GPIBReadBinaryWave2|GPIBReadWave2|GPIBWrite2|GPIBWriteBinary2|GPIBWriteBinaryWave2|GPIBWriteWave2|GetAxis|GetCamera|GetFileFolderInfo|GetGizmo|GetLastUserMenuInfo|GetMarquee|GetMouse|GetSelection|GetWindow|GraphNormal|GraphWaveDraw|GraphWaveEdit|Grep|GroupBox|HDF5CloseFile|HDF5CloseGroup|HDF5ConvertColors|HDF5CreateFile|HDF5CreateGroup|HDF5CreateLink|HDF5Dump|HDF5DumpErrors|HDF5DumpState|HDF5FlushFile|HDF5ListAttributes|HDF5ListGroup|HDF5LoadData|HDF5LoadGroup|HDF5LoadImage|HDF5OpenFile|HDF5OpenGroup|HDF5SaveData|HDF5SaveGroup|HDF5SaveImage|HDF5TestOperation|HDF5UnlinkObject|HDFInfo|HDFReadImage|HDFReadSDS|HDFReadVset|Hanning|HideIgorMenus|HideInfo|HideProcedures|HideTools|HilbertTransform|Histogram|ICA|IFFT|ITCCloseAll2|ITCCloseDevice2|ITCConfigAllChannels2|ITCConfigChannel2|ITCConfigChannelReset2|ITCConfigChannelUpload2|ITCFIFOAvailable2|ITCFIFOAvailableAll2|ITCGetAllChannelsConfig2|ITCGetChannelConfig2|ITCGetCurrentDevice2|ITCGetDeviceInfo2|ITCGetDevices2|ITCGetErrorString2|ITCGetSerialNumber2|ITCGetState2|ITCGetVersions2|ITCInitialize2|ITCOpenDevice2|ITCReadADC2|ITCReadDigital2|ITCReadTimer2|ITCSelectDevice2|ITCSetDAC2|ITCSetGlobals2|ITCSetModes2|ITCSetState2|ITCStartAcq2|ITCStopAcq2|ITCUpdateFIFOPosition2|ITCUpdateFIFOPositionAll2|ITCWriteDigital2|ImageAnalyzeParticles|ImageBlend|ImageBoundaryToMask|ImageComposite|ImageEdgeDetection|ImageFileInfo|ImageFilter|ImageFocus|ImageFromXYZ|ImageGLCM|ImageGenerateROIMask|ImageHistModification|ImageHistogram|ImageInterpolate|ImageLineProfile|ImageLoad|ImageMorphology|ImageRegistration|ImageRemoveBackground|ImageRestore|ImageRotate|ImageSave|ImageSeedFill|ImageSkeleton3d|ImageSnake|ImageStats|ImageThreshold|ImageTransform|ImageUnwrapPhase|ImageWindow|IndexSort|InsertPoints|Integrate|Integrate2D|IntegrateODE|Interp3DPath|Interpolate2|Interpolate3D|JCAMPLoadWave|JointHistogram|JSON_AddValue|JSON_Delete|JSON_GetValue|JSON_GetKeys|JSON_SetArrayElement|KMeans|KillBackground|KillControl|KillDataFolder|KillFIFO|KillFreeAxis|KillPICTs|KillPath|KillStrings|KillVariables|KillWaves|KillWindow|Label|Layout|LayoutPageAction|LayoutSlideShow|Legend|LinearFeedbackShiftRegister|ListBox|LoadData|LoadPICT|LoadPackagePreferences|LoadWave|Loess|LombPeriodogram|MCC_FindServers|MFR_CheckForNewBricklets|MFR_CloseResultFile|MFR_CreateOverviewTable|MFR_GetBrickletCount|MFR_GetBrickletData|MFR_GetBrickletDeployData|MFR_GetBrickletMetaData|MFR_GetBrickletRawData|MFR_GetReportTemplate|MFR_GetResultFileMetaData|MFR_GetResultFileName|MFR_GetVernissageVersion|MFR_GetVersion|MFR_GetXOPErrorMessage|MFR_OpenResultFile|MLLoadWave|Make|MakeIndex|MarkPerfTestTime|MatrixConvolve|MatrixCorr|MatrixEigenV|MatrixFilter|MatrixGLM|MatrixGaussJ|MatrixInverse|MatrixLLS|MatrixLUBkSub|MatrixLUD|MatrixLUDTD|MatrixLinearSolve|MatrixLinearSolveTD|MatrixMultiply|MatrixSVBkSub|MatrixSVD|MatrixSchur|MatrixSolve|MatrixTranspose|MeasureStyledText|Modify|ModifyBoxPlot|ModifyBrowser|ModifyCamera|ModifyContour|ModifyControl|ModifyControlList|ModifyFreeAxis|ModifyGizmo|ModifyGraph|ModifyImage|ModifyLayout|ModifyPanel|ModifyTable|ModifyViolinPlot|ModifyWaterfall|MoveDataFolder|MoveFile|MoveFolder|MoveString|MoveSubwindow|MoveVariable|MoveWave|MoveWindow|MultiTaperPSD|MultiThreadingControl|NC_CloseFile|NC_DumpErrors|NC_Inquire|NC_ListAttributes|NC_ListObjects|NC_LoadData|NC_OpenFile|NI4882|NILoadWave|NeuralNetworkRun|NeuralNetworkTrain|NewCamera|NewDataFolder|NewFIFO|NewFIFOChan|NewFreeAxis|NewGizmo|NewImage|NewLayout|NewMovie|NewNotebook|NewPanel|NewPath|NewWaterfall|Note|Notebook|NotebookAction|Open|OpenHelp|OpenNotebook|Optimize|PCA|ParseOperationTemplate|PathInfo|PauseForUser|PauseUpdate|PlayMovie|PlayMovieAction|PlaySound|PopupContextualMenu|PopupMenu|Preferences|PrimeFactors|Print|PrintGraphs|PrintLayout|PrintNotebook|PrintSettings|PrintTable|Project|PulseStats|PutScrapText|Quit|RatioFromNumber|Redimension|Remez|Remove|RemoveContour|RemoveFromGizmo|RemoveFromGraph|RemoveFromLayout|RemoveFromTable|RemoveImage|RemoveLayoutObjects|RemovePath|Rename|RenameDataFolder|RenamePICT|RenamePath|RenameWindow|ReorderImages|ReorderTraces|ReplaceText|ReplaceWave|Resample|ResumeUpdate|Reverse|Rotate|SQLHighLevelOp|STFT|Save|SaveData|SaveExperiment|SaveGizmoCopy|SaveGraphCopy|SaveNotebook|SavePICT|SavePackagePreferences|SaveTableCopy|SetActiveSubwindow|SetAxis|SetBackground|SetDashPattern|SetDataFolder|SetDimLabel|SetDrawEnv|SetDrawLayer|SetFileFolderInfo|SetFormula|SetIdlePeriod|SetIgorHook|SetIgorMenuMode|SetIgorOption|SetMarquee|SetProcessSleep|SetRandomSeed|SetScale|SetVariable|SetWaveLock|SetWaveTextEncoding|SetWindow|ShowIgorMenus|ShowInfo|ShowTools|Silent|Sleep|Slider|Smooth|SmoothCustom|Sort|SortColumns|SoundInRecord|SoundInSet|SoundInStartChart|SoundInStatus|SoundInStopChart|SoundLoadWave|SoundSaveWave|SphericalInterpolate|SphericalTriangulate|SplitString|SplitWave|Stack|StackWindows|StatsANOVA1Test|StatsANOVA2NRTest|StatsANOVA2RMTest|StatsANOVA2Test|StatsAngularDistanceTest|StatsChiTest|StatsCircularCorrelationTest|StatsCircularMeans|StatsCircularMoments|StatsCircularTwoSampleTest|StatsCochranTest|StatsContingencyTable|StatsDIPTest|StatsDunnettTest|StatsFTest|StatsFriedmanTest|StatsHodgesAjneTest|StatsJBTest|StatsKDE|StatsKSTest|StatsKWTest|StatsKendallTauTest|StatsLinearCorrelationTest|StatsLinearRegression|StatsMultiCorrelationTest|StatsNPMCTest|StatsNPNominalSRTest|StatsQuantiles|StatsRankCorrelationTest|StatsResample|StatsSRTest|StatsSample|StatsScheffeTest|StatsShapiroWilkTest|StatsSignTest|StatsTTest|StatsTukeyTest|StatsVariancesTest|StatsWRCorrelationTest|StatsWatsonUSquaredTest|StatsWatsonWilliamsTest|StatsWheelerWatsonTest|StatsWilcoxonRankTest|String|StructFill|StructGet|StructPut|SumDimension|SumSeries|TDMLoadData|TDMSaveData|TabControl|Tag|TextBox|ThreadGroupPutDF|ThreadStart|TickWavesFromAxis|Tile|TileWindows|TitleBox|ToCommandLine|ToolsGrid|Triangulate3d|URLRequest|Unwrap|VDT2|VDTClosePort2|VDTGetPortList2|VDTGetStatus2|VDTOpenPort2|VDTOperationsPort2|VDTRead2|VDTReadBinary2|VDTReadBinaryWave2|VDTReadHex2|VDTReadHexWave2|VDTReadWave2|VDTTerminalPort2|VDTWrite2|VDTWriteBinary2|VDTWriteBinaryWave2|VDTWriteHex2|VDTWriteHexWave2|VDTWriteWave2|VISAControl|VISARead|VISAReadBinary|VISAReadBinaryWave|VISAReadWave|VISAWrite|VISAWriteBinary|VISAWriteBinaryWave|VISAWriteWave|ValDisplay|Variable|WaveClear|WaveMeanStdv|WaveStats|WaveTransform|WignerTransform|WindowFunction|XLLoadWave|cd|dir|fprintf|printf|pwd|sprintf|sscanf|wfprintf)\b\s*(?:(\/\w+(?:\=[^\/]+)?)\s*)*
-    captures:
-      '1': {name: support.class.modifier.igor}
+    begin: (?i)\b(?:Abort|AddFIFOData|AddFIFOVectData|AddMovieAudio|AddMovieFrame|AddWavesToBoxPlot|AddWavesToViolinPlot|AdoptFiles|Append|AppendBoxPlot|AppendImage|AppendLayoutObject|AppendMatrixContour|AppendText|AppendToGizmo|AppendToGraph|AppendToLayout|AppendToTable|AppendViolinPlot|AppendXYZContour|AutoPositionWindow|AxonTelegraphFindServers|BackgroundInfo|Beep|BoundingBall|BoxSmooth|BrowseURL|BuildMenu|Button|CWT|Chart|CheckBox|CheckDisplayed|ChooseColor|Close|CloseHelp|CloseMovie|CloseProc|ColorScale|ColorTab2Wave|Concatenate|ControlBar|ControlInfo|ControlUpdate|ConvertGlobalStringTextEncoding|ConvexHull|Convolve|CopyDimLabels|CopyFile|CopyFolder|CopyScales|Correlate|CreateAliasShortcut|CreateBrowser|Cross|CtrlBackground|CtrlFIFO|CtrlNamedBackground|Cursor|CurveFit|CustomControl|DAQmx_AI_SetupReader|DAQmx_AO_SetOutputs|DAQmx_CTR_CountEdges|DAQmx_CTR_OutputPulse|DAQmx_CTR_Period|DAQmx_CTR_PulseWidth|DAQmx_DIO_Config|DAQmx_DIO_WriteNewData|DAQmx_Scan|DAQmx_WaveformGen|DPSS|DSPDetrend|DSPPeriodogram|DWT|Debugger|DebuggerOptions|DefaultFont|DefaultGuiControls|DefaultGuiFont|DefaultTextEncoding|DefineGuide|DelayUpdate|DeleteAnnotations|DeleteFile|DeleteFolder|DeletePoints|Differentiate|Display|DisplayHelpTopic|DisplayProcedure|DoAlert|DoIgorMenu|DoUpdate|DoWindow|DoXOPIdle|DrawAction|DrawArc|DrawBezier|DrawLine|DrawOval|DrawPICT|DrawPoly|DrawRRect|DrawRect|DrawText|DrawUserShape|Duplicate|DuplicateDataFolder|EdgeStats|Edit|ErrorBars|EstimatePeakSizes|Execute|ExecuteScriptText|ExperimentInfo|ExperimentModified|ExportGizmo|Extract|FBinRead|FBinWrite|FFT|FGetPos|FIFO2Wave|FIFOStatus|FMaxFlat|FPClustering|FReadLine|FSetPos|FStatus|FTPCreateDirectory|FTPDelete|FTPDownload|FTPUpload|FastGaussTransform|FastOp|FilterFIR|FilterIIR|FindAPeak|FindContour|FindDuplicates|FindLevel|FindLevels|FindPeak|FindPointsInPoly|FindRoots|FindSequence|FindValue|FuncFit|FuncFitMD|GBLoadWave|GISCreateVectorLayer|GISGetRasterInfo|GISGetRegisteredFileInfo|GISGetVectorLayerInfo|GISLoadRasterData|GISLoadVectorData|GISRasterizeVectorData|GISRegisterFile|GISTransformCoords|GISUnRegisterFile|GISWriteFieldData|GISWriteGeometryData|GISWriteRaster|GPIB2|GPIBRead2|GPIBReadBinary2|GPIBReadBinaryWave2|GPIBReadWave2|GPIBWrite2|GPIBWriteBinary2|GPIBWriteBinaryWave2|GPIBWriteWave2|GetAxis|GetCamera|GetFileFolderInfo|GetGizmo|GetLastUserMenuInfo|GetMarquee|GetMouse|GetSelection|GetWindow|GraphNormal|GraphWaveDraw|GraphWaveEdit|Grep|GroupBox|HDF5CloseFile|HDF5CloseGroup|HDF5ConvertColors|HDF5CreateFile|HDF5CreateGroup|HDF5CreateLink|HDF5Dump|HDF5DumpErrors|HDF5DumpState|HDF5FlushFile|HDF5ListAttributes|HDF5ListGroup|HDF5LoadData|HDF5LoadGroup|HDF5LoadImage|HDF5OpenFile|HDF5OpenGroup|HDF5SaveData|HDF5SaveGroup|HDF5SaveImage|HDF5TestOperation|HDF5UnlinkObject|HDFInfo|HDFReadImage|HDFReadSDS|HDFReadVset|Hanning|HideIgorMenus|HideInfo|HideProcedures|HideTools|HilbertTransform|Histogram|ICA|IFFT|ITCCloseAll2|ITCCloseDevice2|ITCConfigAllChannels2|ITCConfigChannel2|ITCConfigChannelReset2|ITCConfigChannelUpload2|ITCFIFOAvailable2|ITCFIFOAvailableAll2|ITCGetAllChannelsConfig2|ITCGetChannelConfig2|ITCGetCurrentDevice2|ITCGetDeviceInfo2|ITCGetDevices2|ITCGetErrorString2|ITCGetSerialNumber2|ITCGetState2|ITCGetVersions2|ITCInitialize2|ITCOpenDevice2|ITCReadADC2|ITCReadDigital2|ITCReadTimer2|ITCSelectDevice2|ITCSetDAC2|ITCSetGlobals2|ITCSetModes2|ITCSetState2|ITCStartAcq2|ITCStopAcq2|ITCUpdateFIFOPosition2|ITCUpdateFIFOPositionAll2|ITCWriteDigital2|ImageAnalyzeParticles|ImageBlend|ImageBoundaryToMask|ImageComposite|ImageEdgeDetection|ImageFileInfo|ImageFilter|ImageFocus|ImageFromXYZ|ImageGLCM|ImageGenerateROIMask|ImageHistModification|ImageHistogram|ImageInterpolate|ImageLineProfile|ImageLoad|ImageMorphology|ImageRegistration|ImageRemoveBackground|ImageRestore|ImageRotate|ImageSave|ImageSeedFill|ImageSkeleton3d|ImageSnake|ImageStats|ImageThreshold|ImageTransform|ImageUnwrapPhase|ImageWindow|IndexSort|InsertPoints|Integrate|Integrate2D|IntegrateODE|Interp3DPath|Interpolate2|Interpolate3D|JCAMPLoadWave|JointHistogram|JSON_AddValue|JSON_Delete|JSON_GetValue|JSON_GetKeys|JSON_SetArrayElement|KMeans|KillBackground|KillControl|KillDataFolder|KillFIFO|KillFreeAxis|KillPICTs|KillPath|KillStrings|KillVariables|KillWaves|KillWindow|Label|Layout|LayoutPageAction|LayoutSlideShow|Legend|LinearFeedbackShiftRegister|ListBox|LoadData|LoadPICT|LoadPackagePreferences|LoadWave|Loess|LombPeriodogram|MCC_FindServers|MFR_CheckForNewBricklets|MFR_CloseResultFile|MFR_CreateOverviewTable|MFR_GetBrickletCount|MFR_GetBrickletData|MFR_GetBrickletDeployData|MFR_GetBrickletMetaData|MFR_GetBrickletRawData|MFR_GetReportTemplate|MFR_GetResultFileMetaData|MFR_GetResultFileName|MFR_GetVernissageVersion|MFR_GetVersion|MFR_GetXOPErrorMessage|MFR_OpenResultFile|MLLoadWave|Make|MakeIndex|MarkPerfTestTime|MatrixConvolve|MatrixCorr|MatrixEigenV|MatrixFilter|MatrixGLM|MatrixGaussJ|MatrixInverse|MatrixLLS|MatrixLUBkSub|MatrixLUD|MatrixLUDTD|MatrixLinearSolve|MatrixLinearSolveTD|MatrixMultiply|MatrixSVBkSub|MatrixSVD|MatrixSchur|MatrixSolve|MatrixTranspose|MeasureStyledText|Modify|ModifyBoxPlot|ModifyBrowser|ModifyCamera|ModifyContour|ModifyControl|ModifyControlList|ModifyFreeAxis|ModifyGizmo|ModifyGraph|ModifyImage|ModifyLayout|ModifyPanel|ModifyTable|ModifyViolinPlot|ModifyWaterfall|MoveDataFolder|MoveFile|MoveFolder|MoveString|MoveSubwindow|MoveVariable|MoveWave|MoveWindow|MultiTaperPSD|MultiThreadingControl|NC_CloseFile|NC_DumpErrors|NC_Inquire|NC_ListAttributes|NC_ListObjects|NC_LoadData|NC_OpenFile|NI4882|NILoadWave|NeuralNetworkRun|NeuralNetworkTrain|NewCamera|NewDataFolder|NewFIFO|NewFIFOChan|NewFreeAxis|NewGizmo|NewImage|NewLayout|NewMovie|NewNotebook|NewPanel|NewPath|NewWaterfall|Note|Notebook|NotebookAction|Open|OpenHelp|OpenNotebook|Optimize|PCA|ParseOperationTemplate|PathInfo|PauseForUser|PauseUpdate|PlayMovie|PlayMovieAction|PlaySound|PopupContextualMenu|PopupMenu|Preferences|PrimeFactors|Print|PrintGraphs|PrintLayout|PrintNotebook|PrintSettings|PrintTable|Project|PulseStats|PutScrapText|Quit|RatioFromNumber|Redimension|Remez|Remove|RemoveContour|RemoveFromGizmo|RemoveFromGraph|RemoveFromLayout|RemoveFromTable|RemoveImage|RemoveLayoutObjects|RemovePath|Rename|RenameDataFolder|RenamePICT|RenamePath|RenameWindow|ReorderImages|ReorderTraces|ReplaceText|ReplaceWave|Resample|ResumeUpdate|Reverse|Rotate|SQLHighLevelOp|STFT|Save|SaveData|SaveExperiment|SaveGizmoCopy|SaveGraphCopy|SaveNotebook|SavePICT|SavePackagePreferences|SaveTableCopy|SetActiveSubwindow|SetAxis|SetBackground|SetDashPattern|SetDataFolder|SetDimLabel|SetDrawEnv|SetDrawLayer|SetFileFolderInfo|SetFormula|SetIdlePeriod|SetIgorHook|SetIgorMenuMode|SetIgorOption|SetMarquee|SetProcessSleep|SetRandomSeed|SetScale|SetVariable|SetWaveLock|SetWaveTextEncoding|SetWindow|ShowIgorMenus|ShowInfo|ShowTools|Silent|Sleep|Slider|Smooth|SmoothCustom|Sort|SortColumns|SoundInRecord|SoundInSet|SoundInStartChart|SoundInStatus|SoundInStopChart|SoundLoadWave|SoundSaveWave|SphericalInterpolate|SphericalTriangulate|SplitString|SplitWave|Stack|StackWindows|StatsANOVA1Test|StatsANOVA2NRTest|StatsANOVA2RMTest|StatsANOVA2Test|StatsAngularDistanceTest|StatsChiTest|StatsCircularCorrelationTest|StatsCircularMeans|StatsCircularMoments|StatsCircularTwoSampleTest|StatsCochranTest|StatsContingencyTable|StatsDIPTest|StatsDunnettTest|StatsFTest|StatsFriedmanTest|StatsHodgesAjneTest|StatsJBTest|StatsKDE|StatsKSTest|StatsKWTest|StatsKendallTauTest|StatsLinearCorrelationTest|StatsLinearRegression|StatsMultiCorrelationTest|StatsNPMCTest|StatsNPNominalSRTest|StatsQuantiles|StatsRankCorrelationTest|StatsResample|StatsSRTest|StatsSample|StatsScheffeTest|StatsShapiroWilkTest|StatsSignTest|StatsTTest|StatsTukeyTest|StatsVariancesTest|StatsWRCorrelationTest|StatsWatsonUSquaredTest|StatsWatsonWilliamsTest|StatsWheelerWatsonTest|StatsWilcoxonRankTest|String|StructFill|StructGet|StructPut|SumDimension|SumSeries|TDMLoadData|TDMSaveData|TabControl|Tag|TextBox|ThreadGroupPutDF|ThreadStart|TickWavesFromAxis|Tile|TileWindows|TitleBox|ToCommandLine|ToolsGrid|Triangulate3d|URLRequest|Unwrap|VDT2|VDTClosePort2|VDTGetPortList2|VDTGetStatus2|VDTOpenPort2|VDTOperationsPort2|VDTRead2|VDTReadBinary2|VDTReadBinaryWave2|VDTReadHex2|VDTReadHexWave2|VDTReadWave2|VDTTerminalPort2|VDTWrite2|VDTWriteBinary2|VDTWriteBinaryWave2|VDTWriteHex2|VDTWriteHexWave2|VDTWriteWave2|VISAControl|VISARead|VISAReadBinary|VISAReadBinaryWave|VISAReadWave|VISAWrite|VISAWriteBinary|VISAWriteBinaryWave|VISAWriteWave|ValDisplay|Variable|WaveClear|WaveMeanStdv|WaveStats|WaveTransform|WignerTransform|WindowFunction|XLLoadWave|cd|dir|fprintf|printf|pwd|sprintf|sscanf|wfprintf)\b
+    end: \s(?![\/])|$
+    patterns:
+    - name: support.class.modifier.igor
+      comment: operation flags
+      begin: \/[A-Za-z]+
+      end: (?=\/|\s|=|\")
+    - include: '#igor_functions'
+    - include: '#igor_common'
 
 foldingStartMarker: ^\s*(?i:function|for|if|switch|strswitch|do|try|menu|submenu)\b
 foldingStopMarker: ^\s*(?i:end|endfor|endif|endswitch|while|endtry)\b
