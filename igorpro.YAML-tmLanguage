@@ -51,7 +51,7 @@ patterns:
   end: $
   patterns:
     - include: '#constant_string'
-    - name: string.other
+    - name: string.other.igor
       begin: <
       end: \>
 
@@ -87,7 +87,7 @@ repository:
       - include: '#constant_string'
       - include: '#constant_punctuation'
       - include: '#constant_numeric'
-      - name: meta.function-call
+      - name: meta.function-call.igor
         match: \w+(?=[\(])
       - name: variable.igor
         comment: all words are variables or functions
