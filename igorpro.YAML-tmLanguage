@@ -46,6 +46,16 @@ patterns:
   match: (?i)\b(?:V|S)_[A-Z]+\b
 
 - name: meta.preprocessor.igor
+  comment: typical igor include statements
+  begin: '^#include\b'
+  end: $
+  patterns:
+    - include: '#constant_string'
+    - name: string.other
+      begin: <
+      end: \>
+
+- name: meta.preprocessor.igor
   comment: C precompiler statements
   match: '^#\w+'
 
