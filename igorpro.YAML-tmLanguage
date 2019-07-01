@@ -153,6 +153,13 @@ repository:
     name: comment.line.double-slash.igor
     begin: //
     end: $
+    patterns:
+    - name: comment.support
+      comment: doxygen comments
+      match: ^/\s
+    - name: keyword.other
+      comment: doxygen instructions
+      match: \@\w+
 
   igor_functions:
     comment: Functions defined in Igor

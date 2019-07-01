@@ -286,6 +286,25 @@
 			<string>$</string>
 			<key>name</key>
 			<string>comment.line.double-slash.igor</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>doxygen comments</string>
+					<key>match</key>
+					<string>^/\s</string>
+					<key>name</key>
+					<string>comment.support</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>doxygen instructions</string>
+					<key>match</key>
+					<string>\@\w+</string>
+					<key>name</key>
+					<string>keyword.other</string>
+				</dict>
+			</array>
 		</dict>
 		<key>igor_common</key>
 		<dict>
