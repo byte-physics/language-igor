@@ -319,7 +319,7 @@
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>doxygen instructions</string>
+					<string>doxygen instructions only for line comments</string>
 					<key>end</key>
 					<string>$</string>
 					<key>name</key>

@@ -162,7 +162,7 @@ repository:
     comment: double slash comments with doxygen instruction
     patterns:
     - name: comment.line.double-dash.igor
-      comment: doxygen instructions
+      comment: doxygen instructions only for line comments
       begin: ^[/]{2,3}\s(\@\w+)
       beginCaptures:
         '1': {name: keyword.other.igor}
