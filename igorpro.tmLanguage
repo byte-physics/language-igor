@@ -63,18 +63,18 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)^\s*(?:(static)\s+)?(?:(threadsafe)\s+)?(Function)\s*(\/\w+)?\s+(\w+)\s*(\()</string>
+			<string>(?i)^\s*(?:(threadsafe)\s+)(?:(static)\s+)?\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.static.igor</string>
+					<string>keyword.other.igor</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.igor</string>
+					<string>storage.modifier.static.igor</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -158,7 +158,7 @@
 					<key>end</key>
 					<string>\&gt;</string>
 					<key>name</key>
-					<string>string.other</string>
+					<string>string.other.igor</string>
 				</dict>
 			</array>
 		</dict>
@@ -306,28 +306,31 @@
 			<key>begin</key>
 			<string>//</string>
 			<key>comment</key>
-			<string>standard double-slash comments</string>
+			<string>double slash comments with doxygen instruction</string>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
-			<string>comment.line.double-slash.igor</string>
+			<string>comment.double-slash.igor</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>comment</key>
-					<string>doxygen comments</string>
 					<key>match</key>
-					<string>^/\s</string>
+					<string>\s\@\w+(?:\[\w+\])?</string>
 					<key>name</key>
-					<string>comment.support</string>
+					<string>keyword.other.igor</string>
 				</dict>
 				<dict>
-					<key>comment</key>
-					<string>doxygen instructions</string>
-					<key>match</key>
-					<string>\@\w+</string>
-					<key>name</key>
-					<string>keyword.other</string>
+					<key>begin</key>
+					<string>\`</string>
+					<key>end</key>
+					<string>\`</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#igor_common</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -353,7 +356,7 @@
 					<key>match</key>
 					<string>\w+(?=[\(])</string>
 					<key>name</key>
-					<string>meta.function-call</string>
+					<string>meta.function-call.igor</string>
 				</dict>
 				<dict>
 					<key>comment</key>

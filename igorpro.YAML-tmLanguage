@@ -22,10 +22,10 @@ patterns:
 
 - name: meta.function
   comment: User-defined functions in procedures
-  begin: (?i)^\s*(?:(static)\s+)?(?:(threadsafe)\s+)?(Function)\s*(\/\w+)?\s+(\w+)\s*(\()
+  begin: (?i)^\s*(?:(threadsafe)\s+)(?:(static)\s+)?\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()
   beginCaptures:
-    '1': {name: storage.modifier.static.igor}
-    '2': {name: keyword.other.igor}
+    '1': {name: keyword.other.igor}
+    '2': {name: storage.modifier.static.igor}
     '3': {name: entity.name.type.igor}
     '4': {name: storage.type.function.igor}
     '5': {name: entity.name.function.igor}
@@ -51,7 +51,7 @@ patterns:
   end: $
   patterns:
     - include: '#constant_string'
-    - name: string.other
+    - name: string.other.igor
       begin: <
       end: \>
 
@@ -87,7 +87,7 @@ repository:
       - include: '#constant_string'
       - include: '#constant_punctuation'
       - include: '#constant_numeric'
-      - name: meta.function-call
+      - name: meta.function-call.igor
         match: \w+(?=[\(])
       - name: variable.igor
         comment: all words are variables or functions
@@ -159,17 +159,17 @@ repository:
     match: (?i)\b(?:sqrt|cbrt|sin|cos|tan|asin|acos|atan|atan2|log|log10|exp|pow|sinh|cosh|tanh|asinh|acosh|atanh|factorial|pi|nan|sgn|floor|ceil|gcd|lcd|comp|sum|mean|variance|skew|kurtosis)\b
 
   igor_comment:
-    comment: standard double-slash comments
-    name: comment.line.double-slash.igor
+    name: comment.double-slash.igor
+    comment: double slash comments with doxygen instruction
     begin: //
     end: $
     patterns:
-    - name: comment.support
-      comment: doxygen comments
-      match: ^/\s
-    - name: keyword.other
-      comment: doxygen instructions
-      match: \@\w+
+      - name: keyword.other.igor
+        match: \s\@\w+(?:\[\w+\])?
+      - begin: \`
+        end: \`
+        patterns:
+        - include: '#igor_common'
 
   igor_functions:
     comment: Functions defined in Igor
