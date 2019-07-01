@@ -22,10 +22,10 @@ patterns:
 
 - name: meta.function
   comment: User-defined functions in procedures
-  begin: (?i)^\s*(?:(static)\s+)?(?:(threadsafe)\s+)?(Function)\s*(\/\w+)?\s+(\w+)\s*(\()
+  begin: (?i)^\s*(?:(threadsafe)\s+)(?:(static)\s+)?\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()
   beginCaptures:
-    '1': {name: storage.modifier.static.igor}
-    '2': {name: keyword.other.igor}
+    '1': {name: keyword.other.igor}
+    '2': {name: storage.modifier.static.igor}
     '3': {name: entity.name.type.igor}
     '4': {name: storage.type.function.igor}
     '5': {name: entity.name.function.igor}
