@@ -61,6 +61,11 @@ patterns:
     - include: '#igor_common'
 
 - include: '#igor_operations'
+
+- name: storage.type.igor
+  comment: inline wave assignments
+  match: (?i)\/wave(?=\=)
+
 - include: '#igor_functions'
 - include: '#igor_common'
 

@@ -185,6 +185,14 @@
 			<string>#igor_operations</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>inline wave assignments</string>
+			<key>match</key>
+			<string>(?i)\/wave(?=\=)</string>
+			<key>name</key>
+			<string>storage.type.igor</string>
+		</dict>
+		<dict>
 			<key>include</key>
 			<string>#igor_functions</string>
 		</dict>
