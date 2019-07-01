@@ -89,9 +89,6 @@ repository:
       - include: '#constant_numeric'
       - name: meta.function-call.igor
         match: \w+(?=[\(])
-      - name: variable.igor
-        comment: all words are variables or functions
-        match: \w+
 
   constant_punctuation:
     comment: punctuations and operators
