@@ -358,14 +358,6 @@
 					<key>name</key>
 					<string>meta.function-call.igor</string>
 				</dict>
-				<dict>
-					<key>comment</key>
-					<string>all words are variables or functions</string>
-					<key>match</key>
-					<string>\w+</string>
-					<key>name</key>
-					<string>variable.igor</string>
-				</dict>
 			</array>
 		</dict>
 		<key>igor_function_definition</key>
