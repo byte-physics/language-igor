@@ -46,6 +46,16 @@ patterns:
   match: (?i)\b(?:V|S)_[A-Z]+\b
 
 - name: meta.preprocessor.igor
+  comment: typical igor include statements
+  begin: '^#include\b'
+  end: $
+  patterns:
+    - include: '#constant_string'
+    - name: string.other
+      begin: <
+      end: \>
+
+- name: meta.preprocessor.igor
   comment: C precompiler statements
   match: '^#\w+'
 
@@ -61,6 +71,11 @@ patterns:
     - include: '#igor_common'
 
 - include: '#igor_operations'
+
+- name: storage.type.igor
+  comment: inline wave assignments
+  match: (?i)\/wave(?=\=)
+
 - include: '#igor_functions'
 - include: '#igor_common'
 
@@ -148,6 +163,13 @@ repository:
     name: comment.line.double-slash.igor
     begin: //
     end: $
+    patterns:
+    - name: comment.support
+      comment: doxygen comments
+      match: ^/\s
+    - name: keyword.other
+      comment: doxygen instructions
+      match: \@\w+
 
   igor_functions:
     comment: Functions defined in Igor

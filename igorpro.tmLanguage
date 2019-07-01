@@ -138,6 +138,31 @@
 			<string>support.variable.igor</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>^#include\b</string>
+			<key>comment</key>
+			<string>typical igor include statements</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>meta.preprocessor.igor</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#constant_string</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>&lt;</string>
+					<key>end</key>
+					<string>\&gt;</string>
+					<key>name</key>
+					<string>string.other</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>comment</key>
 			<string>C precompiler statements</string>
 			<key>match</key>
@@ -183,6 +208,14 @@
 		<dict>
 			<key>include</key>
 			<string>#igor_operations</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>inline wave assignments</string>
+			<key>match</key>
+			<string>(?i)\/wave(?=\=)</string>
+			<key>name</key>
+			<string>storage.type.igor</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -278,6 +311,25 @@
 			<string>$</string>
 			<key>name</key>
 			<string>comment.line.double-slash.igor</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>doxygen comments</string>
+					<key>match</key>
+					<string>^/\s</string>
+					<key>name</key>
+					<string>comment.support</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>doxygen instructions</string>
+					<key>match</key>
+					<string>\@\w+</string>
+					<key>name</key>
+					<string>keyword.other</string>
+				</dict>
+			</array>
 		</dict>
 		<key>igor_common</key>
 		<dict>
