@@ -53,7 +53,8 @@ patterns:
   match: (?i)\b(?:V|S)_[A-Z]+\b
 
 - name: meta.preprocessor.igor
-  match: '^#pragma'
+  comment: C precompiler statements
+  match: '^#\w+'
 
 - name: meta.function-call.igor
   begin: (?i)(MatrixOP|ApMath)
