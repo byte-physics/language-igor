@@ -8,7 +8,7 @@ Development is done using [sublime text editor](http://www.sublimetext.com/) wit
 Update linguist using
 
 ```sh
-script/add-grammar --replace igor-linguist-syntax https://github.com/byte-physics/language-igor
+script/add-grammar --replace language-igor https://github.com/byte-physics/language-igor
 ```
 
 ## sources
