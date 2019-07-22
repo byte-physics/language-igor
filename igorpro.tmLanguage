@@ -211,7 +211,23 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#igor_basic</string>
+			<string>#igor_operations</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>inline wave assignments</string>
+			<key>match</key>
+			<string>(?i)\/wave(?=\=)</string>
+			<key>name</key>
+			<string>constant.igor</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#igor_functions</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#igor_common</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -295,34 +311,6 @@
 			<key>name</key>
 			<string>constant.igor</string>
 		</dict>
-		<key>igor_basic</key>
-		<dict>
-			<key>comment</key>
-			<string>all basic syntax that can exist in functions and macros</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#igor_operations</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>inline wave assignments</string>
-					<key>match</key>
-					<string>(?i)\/wave(?=\=)</string>
-					<key>name</key>
-					<string>constant.igor</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#igor_functions</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#igor_common</string>
-				</dict>
-			</array>
-		</dict>
 		<key>igor_comment</key>
 		<dict>
 			<key>begin</key>
@@ -350,7 +338,11 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#igor_basic</string>
+							<string>#igor_functions</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#igor_common</string>
 						</dict>
 					</array>
 				</dict>
@@ -375,10 +367,8 @@
 					<string>#constant_numeric</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>\w+(?:\#\w+)(?=[\(])</string>
-					<key>name</key>
-					<string>entity.name.igor</string>
+					<key>include</key>
+					<string>#user_functions</string>
 				</dict>
 			</array>
 		</dict>
@@ -448,7 +438,7 @@
 			<key>comment</key>
 			<string>Operations built into Igor</string>
 			<key>end</key>
-			<string>\s(?![\/])|\s</string>
+			<string>\s(?![\/])|$</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -460,6 +450,14 @@
 					<string>(?=\/|\s|=|\")</string>
 					<key>name</key>
 					<string>source.igor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#igor_functions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#igor_common</string>
 				</dict>
 			</array>
 		</dict>
@@ -519,6 +517,20 @@
 							<string>source.igor</string>
 						</dict>
 					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>user_functions</key>
+		<dict>
+			<key>comment</key>
+			<string>user functions are optionally highlighted in IP8</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>([\w\#]+)(?=[\(])</string>
+					<key>name</key>
+					<string>entity.name.igor</string>
 				</dict>
 			</array>
 		</dict>
