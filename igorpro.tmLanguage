@@ -291,7 +291,7 @@
 			<key>end</key>
 			<string>"</string>
 			<key>name</key>
-			<string>string.quoted.double.igor</string>
+			<string>entity.name.tag</string>
 			<key>patterns</key>
 			<array>
 				<dict>

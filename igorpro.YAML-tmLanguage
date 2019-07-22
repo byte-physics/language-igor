@@ -8,7 +8,7 @@ uuid: 47CB09FD-7F85-4CCD-96A8-3931CEBFE553
 #   * Text                  (black)   #000000 → source
 #   * Keyword               (blue)    #0000FF → constant
 #   * Comment               (red)     #FF0000 → keyword
-#   * String                (green)   #009C00 → string
+#   * String                (green)   #009C00 → entity.name.tag
 #   * Operation             (dgreen)  #007575 → entity.name.tag
 #   * Built-in Function     (orange)  #C34E00 → variable
 #   * User-defined Function (purple)  #9C00FD → entity.name
@@ -115,7 +115,7 @@ repository:
         match: ([{}()\[\]])
 
   constant_string:
-    name: string.quoted.double.igor
+    name: entity.name.tag # string.quoted.double.igor
     begin: '"'
     end: '"'
     patterns:
