@@ -291,7 +291,7 @@
 			<key>end</key>
 			<string>"</string>
 			<key>name</key>
-			<string>entity.name.tag</string>
+			<string>entity.name.tag.igor</string>
 			<key>patterns</key>
 			<array>
 				<dict>

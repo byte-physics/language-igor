@@ -115,7 +115,7 @@ repository:
         match: ([{}()\[\]])
 
   constant_string:
-    name: entity.name.tag # string.quoted.double.igor
+    name: entity.name.tag.igor # string.quoted.double.igor
     begin: '"'
     end: '"'
     patterns:
