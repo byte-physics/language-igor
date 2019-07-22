@@ -211,23 +211,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#igor_operations</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>inline wave assignments</string>
-			<key>match</key>
-			<string>(?i)\/wave(?=\=)</string>
-			<key>name</key>
-			<string>constant.igor</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#igor_functions</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#igor_common</string>
+			<string>#igor_basic</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -311,6 +295,34 @@
 			<key>name</key>
 			<string>constant.igor</string>
 		</dict>
+		<key>igor_basic</key>
+		<dict>
+			<key>comment</key>
+			<string>all basic syntax that can exist in functions and macros</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#igor_operations</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>inline wave assignments</string>
+					<key>match</key>
+					<string>(?i)\/wave(?=\=)</string>
+					<key>name</key>
+					<string>constant.igor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#igor_functions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#igor_common</string>
+				</dict>
+			</array>
+		</dict>
 		<key>igor_comment</key>
 		<dict>
 			<key>begin</key>
@@ -338,7 +350,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#igor_common</string>
+							<string>#igor_basic</string>
 						</dict>
 					</array>
 				</dict>
@@ -436,7 +448,7 @@
 			<key>comment</key>
 			<string>Operations built into Igor</string>
 			<key>end</key>
-			<string>\s(?![\/])|$</string>
+			<string>\s(?![\/])|\s</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -448,14 +460,6 @@
 					<string>(?=\/|\s|=|\")</string>
 					<key>name</key>
 					<string>source.igor</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#igor_functions</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#igor_common</string>
 				</dict>
 			</array>
 		</dict>
