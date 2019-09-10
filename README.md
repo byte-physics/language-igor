@@ -3,7 +3,26 @@ A syntax highlighting for Igor Pro using textmate language for github linguist
 
 ## development
 
-Development is done using [sublime text editor](http://www.sublimetext.com/) with the [guide described here](http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html) and the [grammar](https://macromates.com/manual/en/language_grammars) description of textmate. Syntax highlighting was tested using [Neon color scheme](https://github.com/MattDMo/Neon-color-scheme) and activated [ScopeAlways](https://packagecontrol.io/packages/ScopeAlways)
+
+### tmlanguage
+
+Development is done using [sublime text editor](http://www.sublimetext.com/)
+with the [guide described
+here](http://docs.sublimetext.info/en/latest/extensibility/syntaxdefs.html).
+
+Please respect the description of the [valid
+grammar](https://macromates.com/manual/en/language_grammars) for textmate.
+
+Syntax highlighting was tested using [Neon color
+scheme](https://github.com/MattDMo/Neon-color-scheme) and activated
+[ScopeAlways](https://packagecontrol.io/packages/ScopeAlways)
+
+* Toggle Scope Always: <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> tsa
+* Open `~/.config/sublime-text-3/Packages/User/igorpro.YAML-tmLanguage
+* PackageDev Convert to YAML <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> pdcy
+* execute make
+
+### linguist
 
 Update linguist using
 
