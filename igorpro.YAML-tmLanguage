@@ -50,6 +50,29 @@ patterns:
   patterns:
   - include: '#igor_function_definition'
 
+- name: meta.macro
+  comment: Macros
+  begin: (?i)^\s*(Macro|Window)\s+(\w+)\s*(\(\))(\s+:\s+\w+)?
+  beginCaptures:
+    '1': {name: constant.igor} # entity.name.type.igor
+    '2': {name: entity.name.igor} # entity.name.function.igor
+    '3': {name: brackethighlighter.round.igor} # punctuation.definition.parameters.igor
+    '4': {name: entity.name.igor}
+  end: (?i)^\s*EndMacro
+  endCaptures:
+    '0': {name: constant.igor} # punctuation.definition.parameters.igor
+  patterns:
+  - include: '#igor_operations'
+
+- name: meta.picture
+  comment: Picture Capturing Group
+  begin: (?i)^\s*(Picture)
+  beginCaptures:
+    '0': {name: constant.igor}
+  end: (?i)^\s*End
+  endCaptures:
+    '0': {name: constant.igor}
+
 - include: '#igor_variable'
 
 - name: constant.igor
@@ -209,5 +232,5 @@ repository:
     - include: '#igor_functions'
     - include: '#igor_common'
 
-foldingStartMarker: ^\s*(?i:function|for|if|switch|strswitch|do|try|menu|submenu)\b
-foldingStopMarker: ^\s*(?i:end|endfor|endif|endswitch|while|endtry)\b
+foldingStartMarker: ^\s*(?i:function|for|if|switch|strswitch|do|try|menu|submenu|window|macro)\b
+foldingStopMarker: ^\s*(?i:end|endfor|endif|endswitch|while|endtry|endmacro)\b
