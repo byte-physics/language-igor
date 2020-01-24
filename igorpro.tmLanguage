@@ -7,9 +7,9 @@
 		<string>ipf</string>
 	</array>
 	<key>foldingStartMarker</key>
-	<string>^\s*(?i:function|for|if|switch|strswitch|do|try|menu|submenu)\b</string>
+	<string>^\s*(?i:function|for|if|switch|strswitch|do|try|menu|submenu|window|macro)\b</string>
 	<key>foldingStopMarker</key>
-	<string>^\s*(?i:end|endfor|endif|endswitch|while|endtry)\b</string>
+	<string>^\s*(?i:end|endfor|endif|endswitch|while|endtry|endmacro)\b</string>
 	<key>name</key>
 	<string>Igor Pro</string>
 	<key>patterns</key>
@@ -118,6 +118,80 @@
 					<string>#igor_function_definition</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?i)^\s*(Macro|Window)\s+(\w+)\s*(\(\))(\s+:\s+\w+)?</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.igor</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.igor</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>brackethighlighter.round.igor</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.igor</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Macros</string>
+			<key>end</key>
+			<string>(?i)^\s*EndMacro</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>constant.igor</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.macro</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#igor_operations</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?i)^\s*(Picture)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>constant.igor</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Picture Capturing Group</string>
+			<key>end</key>
+			<string>(?i)^\s*End</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>constant.igor</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.picture</string>
 		</dict>
 		<dict>
 			<key>include</key>
