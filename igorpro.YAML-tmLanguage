@@ -36,14 +36,16 @@ patterns:
 
 - name: meta.function
   comment: User-defined functions in procedures
-  begin: (?i)^\s*(?:(threadsafe)\s+)?(?:(static)\s+)?\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()
+  begin: (?i)^\s*((?:(threadsafe)\s+)?(?:(static)\s+)?|(?:(override)))\s*(Function)\s*(\/\w+)?\s+(\w+)\s*(\()
   beginCaptures:
-    '1': {name: constant.igor}
-    '2': {name: constant.igor} # storage.modifier.static.igor
-    '3': {name: constant.igor} # entity.name.type.igor
-    '4': {name: source.igor} # storage.type.function.igor
-    '5': {name: entity.name.igor} # entity.name.function.igor
-    '6': {name: brackethighlighter.round.igor} # punctuation.definition.parameters.igor
+    '1': {name: constant.igor} # threadsafe static | override
+    '2': {name: constant.igor} # threadsafe
+    '3': {name: constant.igor} # static
+    '4': {name: constant.igor} # override
+    '5': {name: constant.igor} # function
+    '6': {name: source.igor} # flags ->
+    '7': {name: entity.name.igor} # functionName
+    '8': {name: brackethighlighter.round.igor} # ()
   end: \)
   endCaptures:
     '0': {name: brackethighlighter.round.igor} # punctuation.definition.parameters.igor
