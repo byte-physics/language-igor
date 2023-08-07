@@ -1,15 +1,10 @@
 # igor-linguist-syntax
 A syntax highlighting for Igor Pro using textmate language for github linguist
 
-## development
-
-
 ### tmlanguage
 
 Please respect the description of the [valid
 grammar](https://macromates.com/manual/en/language_grammars) for textmate.
-
-Development is done using [sublime text editor 3](http://www.sublimetext.com/).
 
 #### setup
 
@@ -23,6 +18,7 @@ Development is done using [sublime text editor 3](http://www.sublimetext.com/).
 * Copy the "igorpro.tmLanguage" to "/Data/Packages" in the sublime folder structure
 * Select "Igor Pro" in the sublime status bar as language
 
+
 * In Visual Studio Code install the "TextMate Languages (pedro-w)" extension.
 * Open the "igorpro.YAML-tmLanguage" file for editing the TextMate Grammar.
 * If valid convert the file to PLIST (the XML format) by opening the VS code command line with <kbd>CTRL</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> and enter "Convert to tmLanguage PLIST file"
@@ -32,6 +28,12 @@ Development is done using [sublime text editor 3](http://www.sublimetext.com/).
 * For evaluating Regex Sublime uses the [oniguruma](https://github.com/kkos/oniguruma) library, whereas GitHub uses PCRE.
 * The file colors.php is a utility script that matches an input color closest to a Github scope name. A representation of the Github colors can be found [here](https://github.com/Alhadis/language-etc/blob/master/samples/lists/scope-previews.nanorc) and the table with the color values used in the script in this [post](https://github.com/github-linguist/linguist/pull/4568#issuecomment-513739638).
 * The scope names in the TextMate Grammar are specifically targeted to match the Github scope names through a mapping table. Thus, different resolved blocks are mapped to the same scope names to result in the same color to ultimately match Igor Pros syntax coloring set by the vendor.
+## development
+
+Development is done using [sublime text editor 3](http://www.sublimetext.com/).
+
+For development using sublime as editor a color definition JSON is included in the file `sublime_colordef.part.json`. Add these colors to the color scheme that is setup in sublime. For the case of `Neon-color-scheme` the target file would be `/Data/Packages/Neon Color Scheme/Neon.sublime-color-scheme`.
+
 ### integrate in VS Code
 
 * to be done
