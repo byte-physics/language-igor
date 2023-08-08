@@ -1,0 +1,347 @@
+//  Igor Pro
+{
+    "name": "Igor Brackethighlighter Angle",
+    "scope": "brackethighlighter.angle",
+    "foreground": "#586069"
+},
+{
+    "name": "Igor Brackethighlighter Curly",
+    "scope": "brackethighlighter.curly",
+    "foreground": "#586069"
+},
+{
+    "name": "Igor Brackethighlighter Quote",
+    "scope": "brackethighlighter.quote",
+    "foreground": "#586069"
+},
+{
+    "name": "Igor Brackethighlighter Round",
+    "scope": "brackethighlighter.round",
+    "foreground": "#586069"
+},
+{
+    "name": "Igor Brackethighlighter Square",
+    "scope": "brackethighlighter.square",
+    "foreground": "#586069"
+},
+{
+    "name": "Igor Brackethighlighter Tag",
+    "scope": "brackethighlighter.tag",
+    "foreground": "#586069"
+},
+{
+    "name": "Igor Brackethighlighter Unmatched",
+    "scope": "brackethighlighter.unmatched",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Carriage Return",
+    "scope": "carriage-return",
+    "foreground": "#FAFBFC"
+},
+{
+    "name": "Igor Comment",
+    "scope": "comment",
+    "foreground": "#6A737D"
+},
+{
+    "name": "Igor Constant",
+    "scope": "constant",
+    "foreground": "#8080FF"
+},
+{
+    "name": "Igor Constant Character Escape",
+    "scope": "constant.character.escape",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Constant Other Reference Link",
+    "scope": "constant.other.reference.link",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor Entity",
+    "scope": "entity",
+    "foreground": "#6F42C1"
+},
+{
+    "name": "Igor Entity Name",
+    "scope": "entity.name",
+    "foreground": "#9C00FD"
+},
+{
+    "name": "Igor Entity Name Constant",
+    "scope": "entity.name.constant",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Entity Name Tag",
+    "scope": "entity.name.tag",
+    "foreground": "#009C00"
+},
+{
+    "name": "Igor Invalid Broken",
+    "scope": "invalid.broken",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Invalid Deprecated",
+    "scope": "invalid.deprecated",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Invalid Illegal",
+    "scope": "invalid.illegal",
+    "foreground": "#FAFBFC"
+},
+{
+    "name": "Igor Invalid Unimplemented",
+    "scope": "invalid.unimplemented",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Keyword",
+    "scope": "keyword",
+    "foreground": "#FF0000"
+},
+{
+    "name": "Igor Markup Bold",
+    "scope": "markup.bold",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Markup Changed",
+    "scope": "markup.changed",
+    "foreground": "#E36209"
+},
+{
+    "name": "Igor Markup Deleted",
+    "scope": "markup.deleted",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Markup Heading",
+    "scope": "markup.heading",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Markup Ignored",
+    "scope": "markup.ignored",
+    "foreground": "#F6F8FA"
+},
+{
+    "name": "Igor Markup Inserted",
+    "scope": "markup.inserted",
+    "foreground": "#22863A"
+},
+{
+    "name": "Igor Markup Italic",
+    "scope": "markup.italic",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Markup List",
+    "scope": "markup.list",
+    "foreground": "#735C0F"
+},
+{
+    "name": "Igor Markup Quote",
+    "scope": "markup.quote",
+    "foreground": "#22863A"
+},
+{
+    "name": "Igor Markup Raw",
+    "scope": "markup.raw",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Markup Untracked",
+    "scope": "markup.untracked",
+    "foreground": "#F6F8FA"
+},
+{
+    "name": "Igor Message Error",
+    "scope": "message.error",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Meta Diff Header",
+    "scope": "meta.diff.header",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Meta Diff Header From-File",
+    "scope": "meta.diff.header.from-file",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Meta Diff Header To-File",
+    "scope": "meta.diff.header.to-file",
+    "foreground": "#22863A"
+},
+{
+    "name": "Igor Meta Diff Range",
+    "scope": "meta.diff.range",
+    "foreground": "#6F42C1"
+},
+{
+    "name": "Igor Meta Module-Reference",
+    "scope": "meta.module-reference",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Meta Output",
+    "scope": "meta.output",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Meta Property-Name",
+    "scope": "meta.property-name",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Meta Separator",
+    "scope": "meta.separator",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Punctuation Definition Changed",
+    "scope": "punctuation.definition.changed",
+    "foreground": "#E36209"
+},
+{
+    "name": "Igor Punctuation Definition Comment",
+    "scope": "punctuation.definition.comment",
+    "foreground": "#6A737D"
+},
+{
+    "name": "Igor Punctuation Definition Deleted",
+    "scope": "punctuation.definition.deleted",
+    "foreground": "#B31D28"
+},
+{
+    "name": "Igor Punctuation Definition Inserted",
+    "scope": "punctuation.definition.inserted",
+    "foreground": "#22863A"
+},
+{
+    "name": "Igor Punctuation Definition String",
+    "scope": "punctuation.definition.string",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor Punctuation Section Embedded",
+    "scope": "punctuation.section.embedded",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Source",
+    "scope": "source",
+//    "foreground": "#000000"
+    "foreground": "#FFFFFF"
+},
+{
+    "name": "Igor Source Regexp",
+    "scope": "source.regexp",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor Source Ruby Embedded",
+    "scope": "source.ruby.embedded",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Storage",
+    "scope": "storage",
+    "foreground": "#D73A49"
+},
+{
+    "name": "Igor Storage Modifier Import",
+    "scope": "storage.modifier.import",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Storage Modifier Package",
+    "scope": "storage.modifier.package",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor String",
+    "scope": "string",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor String Comment",
+    "scope": "string.comment",
+    "foreground": "#6A737D"
+},
+{
+    "name": "Igor String Other Link",
+    "scope": "string.other.link",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor String Regexp",
+    "scope": "string.regexp",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor String Regexp Arbitrary-Repetition",
+    "scope": "string.regexp.arbitrary-repetition",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor String Regexp Character-Class",
+    "scope": "string.regexp.character-class",
+    "foreground": "#032F62"
+},
+{
+    "name": "Igor Sublimelinter Mark Error",
+    "scope": "sublimelinter.mark.error",
+    "foreground": "#FF0000"
+},
+{
+    "name": "Igor Sublimelinter Mark Warning",
+    "scope": "sublimelinter.mark.warning",
+    "foreground": "#FFFF00"
+},
+{
+    "name": "Igor Support",
+    "scope": "support",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Support Constant",
+    "scope": "support.constant",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Support Variable",
+    "scope": "support.variable",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Variable",
+    "scope": "variable",
+    "foreground": "#C34E00"
+},
+{
+    "name": "Igor Variable Language",
+    "scope": "variable.language",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Variable Other",
+    "scope": "variable.other",
+    "foreground": "#24292E"
+},
+{
+    "name": "Igor Variable Other Constant",
+    "scope": "variable.other.constant",
+    "foreground": "#005CC5"
+},
+{
+    "name": "Igor Variable Parameter Function",
+    "scope": "variable.parameter.function",
+    "foreground": "#24292E"
+}
