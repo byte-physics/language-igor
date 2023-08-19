@@ -40,11 +40,48 @@ For development using sublime as editor a color definition JSON is included in t
 
 ### linguist
 
-Update linguist using
+#### Updating the grammar
+
+According to the pull request template of the linguist project updating the grammar is not required as
+`grammar submodules are updated automatically with each new release`. See [linguist PR template](https://github.com/github-linguist/linguist/blob/master/.github/PULL_REQUEST_TEMPLATE.md?plain=1)
+
+For updating it locally the `add-grammar` utility script from linguist can be used:
 
 ```sh
 script/add-grammar --replace language-igor https://github.com/byte-physics/language-igor
 ```
+
+Note that the script requires a working docker service or it aborts silently. If docker works can be checked with e.g. `docker ps`.
+
+#### Getting linguist running locally
+
+Getting linguist running locally is useful to run the tests.
+
+Linguist is written in ruby and thus required the ruby package installed. For setting up all required ruby packages (gems) it brings a script
+
+```sh
+script/bootstrap
+```
+
+However, this needs some dependencies. First one needs bundler that is a ruby package:
+
+```sh
+gem install bundler
+```
+
+And it requires some more dependencies for building the gems from the bootstrap script. The linguist readme states for Ubuntu:
+
+```sh
+sudo apt-get install build-essential cmake pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
+```
+
+Most likely more packages are needed on a basic linux install.
+
+Run the tests with
+```sh
+bundle exec rake test
+```
+
 
 ## sources
 
